@@ -559,62 +559,6 @@
                 <div class="search-results-preview"></div>
 
     <script src="js/main.js"></script>
-    <script>
-    (function() {
-        // ── Filter Buttons ──
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const videoCards = document.querySelectorAll('.video-card-modern');
-
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                const filter = this.dataset.filter;
-                videoCards.forEach(card => {
-                    if (filter === 'all' || card.dataset.category === filter) {
-                        card.classList.remove('hidden');
-                    } else {
-                        card.classList.add('hidden');
-                    }
-                });
-            });
-        });
-
-        // ── Video Card → Modal ──
-        const modal      = document.getElementById('videoModal');
-        const modalVideo = document.getElementById('modalVideo');
-        const modalTitle = document.getElementById('modalTitle');
-        const modalDesc  = document.getElementById('modalDesc');
-        const closeBtn   = document.getElementById('closeModal');
-
-        videoCards.forEach(card => {
-            card.addEventListener('click', function() {
-                const src   = this.dataset.video;
-                const title = this.dataset.title;
-                const desc  = this.dataset.desc;
-                modalVideo.querySelector('source').src = src;
-                modalVideo.load();
-                modalVideo.play();
-                modalTitle.textContent = title;
-                modalDesc.textContent  = desc;
-                modal.classList.add('open');
-                document.body.style.overflow = 'hidden';
-            });
-        });
-
-        function closeModal() {
-            modal.classList.remove('open');
-            modalVideo.pause();
-            modalVideo.querySelector('source').src = '';
-            modalVideo.load();
-            document.body.style.overflow = '';
-        }
-
-        closeBtn.addEventListener('click', closeModal);
-        modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
-        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-    })();
-    </script>
 
 
     <script src="js/search-data.js"></script>

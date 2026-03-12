@@ -57,11 +57,12 @@
     <style>
         /* ── Video Hero ── */
         .video-hero {
-            min-height: 300px;
+            min-height: 220px !important;
             background: url('assets/images/shelf_containers_large.jpg') center/cover no-repeat;
             display: flex;
-            align-items: flex-end;
-            padding-bottom: 1.5rem;
+            align-items: center;
+            padding-top: 80px;
+            padding-bottom: 1rem;
             position: relative;
         }
         .video-hero::before {
@@ -71,7 +72,7 @@
             background: linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.62) 100%);
         }
         .video-hero .container { position: relative; z-index: 1; color: #fff; }
-        .video-hero h1 { font-size: clamp(2rem, 6vw, 3.5rem); color: #fff; margin-bottom: 0.75rem; }
+        .video-hero h1 { font-size: 2.2rem; color: #fff; margin-bottom: 0.5rem; }
         .video-hero p  { font-size: 1.1rem; color: rgba(255,255,255,0.9); }
 
         /* ── Video Filters ── */
@@ -87,7 +88,8 @@
                 margin-top: 1.25rem;
                 padding: 0.75rem 1rem;
             }
-            .video-hero { min-height: 240px; padding-bottom: 1.5rem; }
+            .video-hero { min-height: 180px; padding-bottom: 1rem; }
+            .video-hero h1 { font-size: 1.8rem; }
         }
         .filter-btn {
             padding: 0.55rem 1.35rem;

@@ -52,13 +52,17 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.addEventListener('click', (e) => {
                 if (window.innerWidth <= 1024) {
                     e.preventDefault();
+                    e.stopPropagation(); // Avoid bubbling
                     const liParent = btn.closest('.split-nav-item');
                     const isActive = liParent.classList.contains('submenu-active');
                     
-                    // Close other open submenus at the same level
-                    liParent.parentElement.querySelectorAll('.submenu-active').forEach(el => {
-                        if (el !== liParent) el.classList.remove('submenu-active');
-                    });
+                    // Close other open submenus at ONLY the same level
+                    const siblings = liParent.parentElement.children;
+                    for (let sibling of siblings) {
+                        if (sibling !== liParent) {
+                            sibling.classList.remove('submenu-active');
+                        }
+                    }
                     
                     liParent.classList.toggle('submenu-active', !isActive);
                 }
